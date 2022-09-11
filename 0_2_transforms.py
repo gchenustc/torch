@@ -12,12 +12,12 @@ img_PIL = Image.open(image_path)
 # 创建 ToTensor 实例
 tensor_trans = transforms.ToTensor()
 # 转换格式 - tensor
-img_tensor = tensor_trans(img_PIL) # img_tensor元素的值介于0-1之间, 并且是CHW格式
+img_tensor = tensor_trans(img_PIL) # img_tensor元素的值介于0-1之间, 并且将HWC转换为CHW格式
 # 转换格式 - np
 img_numpy = np.array(img_PIL) # img_numpy的值介于0-255之间，并且是HWC格式
 
-# print(img_tensor, img_tensor.shape)
-# print(img_numpy, img_numpy.shape) # 
+# print(img_tensor, img_tensor.shape) # (3,h,w)
+# print(img_numpy, img_numpy.shape) # (h,w,3)
 
 writer.add_image("img_tensor",img_tensor,1)
 writer.add_image("image_np",img_numpy,1,dataformats="HWC")
